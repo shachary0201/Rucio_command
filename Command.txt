@@ -1,0 +1,10 @@
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+voms-proxy-init -voms cms -rfc -valid 192:00
+source /cvmfs/cms.cern.ch/rucio/setup-old.sh
+export RUCIO_ACCOUNT=UserName
+rucio add-rule     cms:/Muon0/Run2024A-PromptReco-v1/NANOAOD 1     T2_CH_CERN     --lifetime 2592000     --activity "User AutoApprove"     --ask-approval
+rucio list-rules --account UserName
+
+
+Note:dataset can be found using dasgoclient command
+e.g dasgoclient -query="file dataset=/EphemeralHLTPhysics1/Run2024D-v1/RAW run=380346 lumi=179"
